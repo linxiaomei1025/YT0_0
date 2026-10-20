@@ -1,0 +1,16 @@
+{
+  "method": "In the first session,  I learnd the method practical research. And in the second session, our tutor let us use this method. He guided us to manually install VSCode and set up a GitHub step by step. \n\n",
+  "related_work": "This week I also read Christiane Paul's Digital Art (3rd ed., Thames & Hudson, 2015) and Campbell-Kelly et al.'s Computer: A History of the Information Machine (4th ed., Routledge, 2023). I also watched The Net Ninja's HTML & CSS Crash Course on YouTube. I have not finished reading them, but these three sources significantly strengthened my understanding of digital art, computing history, and web coding.",
+  "references": "[1] Christiane Paul. 2015. Digital Art. 3rd ed. Thames & Hudson, London, UK. ISBN 9780500204238.\n\n[2] Martin Campbell-Kelly, William Aspray, Jeffrey R. Yost, Honghong Tinn, and Gerardo Con Díaz. 2023. Computer: A History of the Information Machine. 4th ed. Routledge, New York, NY, USA. https://doi.org/10.4324/9781003263272.",
+  "conclusion_future_work": "To solve how code drives images into an interactive webpage, I will review Blackboard materials and ask technician Alice. In practice, I will use HTML to make my pixel art clickable, turning flashlight assets into an interactive page step by step by myself.",
+  "date": "2026-09-28T09:18:00.000+08:00",
+  "results_discussion": "This week, I completed two drawing tasks. For Figure 1 which made on Thursday, I photographed myself with a 3D printer in Capital House and edited myself onto it, pretending I was being printed. For Figure 2, I drew a half-mechanical headless lamb. We need to draw classmates, and I guess maybe we don`t need to draw the real human. So I combine my group member`s love for robots and a fantasy lamb game to create this amazing animal. I also prepared Project 0 assets. I split a flashlight into bulb, circuit, switch, and shell, then drew pixel art for each part. However, I am still unsure how to turn these assets into an interactive webpage and how to embed the code. This remains my key challenge.",
+  "week": 1,
+  "title": "Coding W1",
+  "images": [
+    "assets/images/微信图片_20260929161203_99_29.jpg",
+    "assets/images/微信图片_20260929161023_98_29.jpg"
+  ],
+  "introduction": "In this week, I drew a portrait with paper ofmy partner and took a photo with it todocument. Then I edited an image toconnect myself with equipment in ourCapital House. I chose the 3D printer andpretend I was being printed. At last, Iinstalled VSCode on Friday.",
+  "video": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9ivBf_eKCPIAYXWzLlPAm6G"
+}

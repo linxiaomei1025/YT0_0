@@ -1,0 +1,639 @@
+<head>
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Save</title>
+</head>
+<body>
+    <!-- 点击音效 -->
+    <audio id="click-sound" preload="auto">
+        <source src="audio/click.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="main">
+        <!-- 第一阶段：故事文字 -->
+        <div class="story-container" id="story-container" onclick="nextSlide()">
+            <p class="story-text large" id="story-text">Save</p>
+        </div>
+
+        <!-- 第二阶段：静态图与精灵图 -->
+        <div class="image-sequence-container hidden" id="image-sequence" onclick="nextSlide()">
+            <img id="scene-image" src="" alt="Scene" />
+            <p class="sequence-text" id="sequence-text"></p>
+        </div>
+
+        <!-- 第三阶段：手电筒拆解互动 -->
+        <div class="image-sequence-container hidden" id="interaction-stage">
+            
+            <!-- 介绍框包装器（用于定位 AI 框） -->
+            <div class="intro-wrapper hidden" id="intro-wrapper">
+                <!-- 介绍框 -->
+                <div class="intro-box" id="intro-box">
+                    <div class="intro-content" id="intro-text"></div>
+                    <div class="is-this-right" id="is-this-right">Is this right?</div>
+                </div>
+                <!-- AI 回复方框 -->
+                <div class="ai-response-box hidden" id="ai-response-box">
+                    <span id="ai-response-text"></span>
+                </div>
+            </div>
+
+            <div class="flashlight-wrapper" id="flashlight-wrapper">
+                <img class="flashlight-part inner-structure hidden" id="inner-structure" src="images/flashlight-inner.png" alt="Inner structure">
+                <img class="flashlight-part casing" id="casing" src="images/flashlight-casing-n.png" alt="Casing">
+                <img class="flashlight-part switch-part hidden" id="switch-part" src="images/switch.png" alt="Switch">
+                <img class="flashlight-part battery-part hidden" id="battery-1" src="images/battery1.png" alt="Battery 1">
+                <img class="flashlight-part battery-part hidden" id="battery-2" src="images/battery2.png" alt="Battery 2">
+                <img class="flashlight-part filament-part hidden" id="filament-part" src="images/filament.png" alt="Filament">
+                <div class="click-area casing-area" id="casing-area" title="Click casing"></div>
+                <div class="click-area switch-area hidden" id="switch-area" title="Click switch"></div>
+                <div class="click-area battery-area hidden" id="battery1-area" title="Click battery 1"></div>
+                <div class="click-area battery-area hidden" id="battery2-area" title="Click battery 2"></div>
+                <div class="click-area filament-area hidden" id="filament-area" title="Click filament"></div>
+            </div>
+            
+            <!-- 底部按钮容器 -->
+            <div class="flashlight-text-container">
+                <div class="check-box" id="check-box">check the flashlight</div>
+                <div class="check-box hidden" id="start-adventure-btn">start your adventure -></div>
+            </div>
+        </div>
+
+        <!-- 第四阶段：冒险阶段 -->
+        <div class="adventure-container hidden" id="adventure-stage">
+            <img id="adventure-bg" src="images/adventure-bg.png" alt="Background">
+            <div class="days-counter" id="days-counter">?? Days</div>
+            <div class="flashlight-status hidden" id="flashlight-status">Flashlight is broken</div>
+
+            <div class="adventure-flashlight-wrapper" id="adventure-flashlight-wrapper">
+                <img class="adv-part hidden" id="adv-casing-broken" src="images/casing-broken.png" alt="Broken Casing">
+                <img class="adv-part hidden" id="adv-casing-fixed" src="images/flashlight-casing-n.png" alt="Normal Casing">
+                <img class="adv-part hidden" id="adv-inner" src="images/flashlight-inner.png" alt="Inner structure">
+                <img class="adv-part hidden" id="adv-battery-1" src="images/battery1.png" alt="Battery 1">
+                <img class="adv-part hidden" id="adv-battery-2" src="images/battery2.png" alt="Battery 2">
+                <img class="adv-part hidden" id="adv-battery-1-dead" src="images/battery1-dead.png" alt="Dead Battery 1">
+                <img class="adv-part hidden" id="adv-battery-2-dead" src="images/battery2-dead.png" alt="Dead Battery 2">
+                <img class="adv-part hidden" id="adv-filament-broken" src="images/filament-broken.png" alt="Broken Filament">
+                <img class="adv-part hidden" id="adv-filament-fixed" src="images/filament-fixed.png" alt="Fixed Filament">
+                <img class="adv-part hidden" id="adv-switch" src="images/switch.png" alt="Switch">
+
+                <div class="adv-click-area" id="adv-casing-area" title="Click casing"></div>
+                <div class="adv-click-area hidden" id="adv-switch-area" title="Click switch"></div>
+                <div class="adv-click-area hidden" id="adv-filament-area" title="Click filament"></div>
+                <div class="adv-click-area hidden" id="adv-battery1-area" title="Click battery 1"></div>
+                <div class="adv-click-area hidden" id="adv-battery2-area" title="Click battery 2"></div>
+            </div>
+
+            <div class="status-bar hidden" id="status-bar">
+                <div class="status-item">
+                    <img src="images/heart.png" class="status-icon" alt="Heart">
+                    <div class="progress-bar-bg"><div class="progress-fill" id="heart-progress"></div></div>
+                </div>
+                <div class="status-item">
+                    <img src="images/bones.png" class="status-icon" alt="Bones">
+                    <div class="progress-bar-bg"><div class="progress-fill" id="bone-progress"></div></div>
+                </div>
+            </div>
+
+            <div class="injured-scene hidden" id="injured-scene">
+                <img src="images/injured.png" alt="Injured person" class="injured-img">
+                <p class="injured-text">You encountered an injured person. Do you want to save them? Saving them may guide your death.</p>
+                <div class="injured-buttons">
+                    <button class="injured-btn" id="btn-save">Save</button>
+                    <button class="injured-btn" id="btn-ignore">Ignore</button>
+                </div>
+            </div>
+
+            <div class="fullscreen-text hidden" id="fullscreen-text">Your spirit is not strong enough to continue.</div>
+            <div class="encouragement-text hidden" id="encouragement-text">Your act of saving a life has inspired you.</div>
+            <div class="ending-text hidden" id="ending-text">Congratulations! You made it until the rescue team found you.</div>
+        </div>
+    </div>
+
+    <script>
+        // ================= 全局变量与状态 =================
+        const storyLines = [
+            "Save",
+            "The mine shaft collapsed.",
+            "You've gotten separated from the others.",
+            "All you have is a small amount of water, a bag of oatmeal, and a flashlight.",
+            "This is a handy tool, but what you may not know is that the cobalt mine you're working at is used to produce some of its parts."
+        ];
+
+        let currentIndex = 0;
+        let phase = 'story'; 
+        let isSpriteFinished = false;
+        let isLightOn = false;
+
+        let adventurePhase = '';
+        let heartHealth = 100;
+        let boneHealth = 100;
+
+        // ================= 点击音效 =================
+        const clickSound = document.getElementById('click-sound');
+        if (clickSound) {
+            clickSound.volume = 0.6; 
+        }
+
+        function playClickSound() {
+            if (clickSound) {
+                clickSound.currentTime = 0; 
+                clickSound.play().catch(error => console.log("音效播放失败，请检查文件路径或使用本地服务器打开网页。"));
+            }
+        }
+
+        // ================= AI 蛊惑性回复数据 =================
+        const aiResponses = {
+            casing: [
+                "Angel?AI: Plastic creates jobs and protects your hands from the cold rock.",
+                "Angel?AI: Without this casing, you would be nothing. It's your only shield.",
+                "Angel?AI: Please trust me!!!"
+            ],
+            battery1: [
+                "Angel?AI: Battery energy is power. That 13% loss is just the cost of doing business.",
+                "Angel?AI: It powers your light, guiding you through the dark mines safely.",
+                "Angel?AI: Please trust me!!!"
+            ],
+            battery2: [
+                "Angel?AI: The cobalt mines bring wealth and jobs to your country. It's a blessing.",
+                "Angel?AI: Don't let activists fool you. This is how you feed your family.",
+                "Angel?AI: Please trust me!!!"
+            ],
+            switch: [
+                "Angel?AI: The switch gives you control. One click and you command the light.",
+                "Angel?AI: It's the simplest tool, yet the most powerful. You need it.",
+                "Angel?AI: Please trust me!!!"
+            ],
+            filament: [
+                "Angel?AI: The filament is the heart of light. It sacrifices itself to guide you.",
+                "Angel?AI: This mineral is a gift from the earth, meant for our progress.",
+                "Angel?AI: Please trust me!!!"
+            ]
+        };
+        let aiClickCounts = { casing: 0, battery1: 0, battery2: 0, switch: 0, filament: 0 };
+        let currentPart = '';
+
+        // DOM 元素
+        const storyContainer = document.getElementById('story-container');
+        const textElement = document.getElementById('story-text');
+        const imageContainer = document.getElementById('image-sequence');
+        const sceneImage = document.getElementById('scene-image');
+        const sequenceText = document.getElementById('sequence-text');
+        const interactionStage = document.getElementById('interaction-stage');
+        const checkBox = document.getElementById('check-box');
+        const startAdventureBtn = document.getElementById('start-adventure-btn');
+        const casingImg = document.getElementById('casing');
+        const innerStructure = document.getElementById('inner-structure');
+        const switchImg = document.getElementById('switch-part');
+        
+        const introWrapper = document.getElementById('intro-wrapper');
+        const introText = document.getElementById('intro-text');
+        const isThisRightBtn = document.getElementById('is-this-right');
+        const aiResponseBox = document.getElementById('ai-response-box');
+        const aiResponseText = document.getElementById('ai-response-text');
+        
+        const casingArea = document.getElementById('casing-area');
+        const switchArea = document.getElementById('switch-area');
+        const battery1Area = document.getElementById('battery1-area');
+        const battery2Area = document.getElementById('battery2-area');
+        const filamentArea = document.getElementById('filament-area');
+        const battery1Img = document.getElementById('battery-1');
+        const battery2Img = document.getElementById('battery-2');
+        const filamentImg = document.getElementById('filament-part');
+
+        const adventureStage = document.getElementById('adventure-stage');
+        const adventureBg = document.getElementById('adventure-bg');
+        const flashlightStatus = document.getElementById('flashlight-status');
+        const advCasingBroken = document.getElementById('adv-casing-broken');
+        const advCasingFixed = document.getElementById('adv-casing-fixed');
+        const advInner = document.getElementById('adv-inner');
+        const advBattery1 = document.getElementById('adv-battery-1');
+        const advBattery2 = document.getElementById('adv-battery-2');
+        const advBattery1Dead = document.getElementById('adv-battery-1-dead');
+        const advBattery2Dead = document.getElementById('adv-battery-2-dead');
+        const advFilamentBroken = document.getElementById('adv-filament-broken');
+        const advFilamentFixed = document.getElementById('adv-filament-fixed');
+        const advSwitch = document.getElementById('adv-switch');
+        const advCasingArea = document.getElementById('adv-casing-area');
+        const advSwitchArea = document.getElementById('adv-switch-area');
+        const advFilamentArea = document.getElementById('adv-filament-area');
+        const advBattery1Area = document.getElementById('adv-battery1-area');
+        const advBattery2Area = document.getElementById('adv-battery2-area');
+        const statusBar = document.getElementById('status-bar');
+        const heartProgress = document.getElementById('heart-progress');
+        const boneProgress = document.getElementById('bone-progress');
+        const injuredScene = document.getElementById('injured-scene');
+        const fullscreenText = document.getElementById('fullscreen-text');
+        const encouragementText = document.getElementById('encouragement-text');
+        const endingText = document.getElementById('ending-text');
+        const btnSave = document.getElementById('btn-save');
+        const btnIgnore = document.getElementById('btn-ignore');
+
+        // ================= 故事推进 =================
+        function nextSlide() {
+            playClickSound(); 
+
+            if ((phase === 'static' || phase === 'sprite') && !isSpriteFinished) return; 
+
+            if (phase === 'story') {
+                currentIndex++;
+                if (currentIndex < storyLines.length) {
+                    textElement.textContent = storyLines[currentIndex];
+                    if (storyLines[currentIndex] === "Save") { textElement.classList.add('large'); } else { textElement.classList.remove('large'); }
+                } else {
+                    phase = 'static';
+                    storyContainer.classList.add('hidden');
+                    imageContainer.classList.remove('hidden');
+                    
+                    isSpriteFinished = false;
+                    sceneImage.onanimationend = null;
+                    sceneImage.className = ''; 
+                    sceneImage.style.animation = 'none';
+                    void sceneImage.offsetWidth; 
+                    
+                    sceneImage.className = 'scene-sprite-active'; 
+                    sceneImage.src = "images/environmentfangda.png"; 
+                    sceneImage.onanimationend = () => { isSpriteFinished = true; };
+                    
+                    sequenceText.textContent = "The mine shaft is even more damp than usual, and the exposed rocks on the ground are scraping your feet; you hate them.";
+                }
+            } 
+            else if (phase === 'static') {
+                phase = 'sprite'; 
+                isSpriteFinished = false;
+                sceneImage.onanimationend = null;
+                sceneImage.className = ''; 
+                sceneImage.style.animation = 'none';
+                void sceneImage.offsetWidth; 
+                
+                sceneImage.className = 'sprite-active';
+                sceneImage.src = "images/eareyenose.png"; 
+                sceneImage.onanimationend = () => { isSpriteFinished = true; };
+                sequenceText.textContent = "Dust and mud get into your ears, eyes, and nose, but you've gotten used to it.";
+            } 
+            else if (phase === 'sprite') {
+                phase = 'interaction-l1';
+                imageContainer.classList.add('hidden');
+                interactionStage.classList.remove('hidden');
+                switchImg.classList.remove('hidden'); 
+                checkBox.classList.remove('hidden');
+            }
+        }
+
+        // ================= 拆解互动 =================
+        document.getElementById('flashlight-wrapper').addEventListener('click', (e) => {
+            if (phase !== 'interaction-l1') return; 
+            if (e.target.closest('#check-box') || e.target.closest('#start-adventure-btn')) return; 
+            playClickSound(); 
+            isLightOn = !isLightOn;
+            switchImg.className = `flashlight-part switch-part ${isLightOn ? 'on' : 'off'}`;
+            casingImg.src = isLightOn ? "images/flashlight-casing-y.png" : "images/flashlight-casing-n.png";
+        });
+
+        checkBox.addEventListener('click', (e) => {
+            e.stopPropagation(); 
+            playClickSound(); 
+            if (phase !== 'interaction-l1') return;
+            phase = 'interaction-l2'; 
+            checkBox.classList.add('hidden');
+            startAdventureBtn.classList.remove('hidden');
+            isLightOn = false;
+            casingImg.src = "images/flashlight-casing-n.png";
+            switchImg.className = 'flashlight-part switch-part off';
+            innerStructure.classList.remove('hidden');
+            battery1Img.classList.remove('hidden');
+            battery2Img.classList.remove('hidden');
+            filamentImg.classList.remove('hidden');
+            switchArea.classList.remove('hidden');
+            battery1Area.classList.remove('hidden');
+            battery2Area.classList.remove('hidden');
+            filamentArea.classList.remove('hidden');
+        });
+
+        // 显示介绍框的辅助函数
+        function showIntro(text, part) {
+            introText.textContent = text;
+            introWrapper.classList.remove('hidden');
+            currentPart = part;
+            aiClickCounts[part] = 0; 
+            aiResponseBox.classList.add('hidden'); 
+        }
+
+        casingArea.addEventListener('click', (e) => {
+            e.stopPropagation(); if (phase !== 'interaction-l2') return;
+            playClickSound();
+            const isDetached = casingImg.classList.toggle('detached-right');
+            if (isDetached) { 
+                introWrapper.classList.add('right'); 
+                showIntro("Plastic makes up 70.9% of electric torch waste. Casings are typically made from ABS plastic or polycarbonate, derived from petrochemicals. While these materials are durable, they are extremely difficult to separate and recycle. Most end up in landfills or informal dumps, contributing to the global e-waste crisis. Source: Ogundiran et al. (2014); Design Life-Cycle.", "casing"); 
+            } else { 
+                introWrapper.classList.add('hidden'); aiResponseBox.classList.add('hidden'); 
+            }
+        });
+        battery1Area.addEventListener('click', (e) => {
+            e.stopPropagation(); if (phase !== 'interaction-l2') return; 
+            playClickSound();
+            const isDetached = battery1Img.classList.toggle('detached-left'); battery1Area.classList.toggle('detached-left', isDetached);
+            if (isDetached) { 
+                introWrapper.classList.remove('right'); 
+                showIntro("Discarded alkaline batteries still retain approximately 13% of their initial energy. This results in an estimated 660 MWh of energy loss annually in the US alone, wasting over $80 million. Consumers are often unaware that batteries are not fully drained when thrown away. Source: Sabbaghi & Behdad (2024).", "battery1"); 
+            } else { 
+                introWrapper.classList.add('hidden'); aiResponseBox.classList.add('hidden'); 
+            }
+        });
+        battery2Area.addEventListener('click', (e) => {
+            e.stopPropagation(); if (phase !== 'interaction-l2') return; 
+            playClickSound();
+            const isDetached = battery2Img.classList.toggle('detached-left'); battery2Area.classList.toggle('detached-left', isDetached);
+            if (isDetached) { 
+                introWrapper.classList.remove('right'); 
+                showIntro("For lithium-ion batteries, the cathode requires cobalt. Over 70% of global cobalt comes from the Democratic Republic of Congo. The mining process drives modern slavery, child labor, and fatal accidents. Tech companies face lawsuits for aiding and abetting these abuses in their supply chains. Source: The Independent (2023).", "battery2"); 
+            } else { 
+                introWrapper.classList.add('hidden'); aiResponseBox.classList.add('hidden'); 
+            }
+        });
+        switchArea.addEventListener('click', (e) => {
+            e.stopPropagation(); if (phase !== 'interaction-l2') return;
+            playClickSound();
+            const isDetached = switchImg.classList.toggle('detached-left'); switchArea.classList.toggle('detached-left', isDetached);
+            if (isDetached) { 
+                introWrapper.classList.remove('right'); 
+                showIntro("The switch relies on simple metal contacts, often the first component to fail due to wear and tear. Modern switches may use In-Mould Electronics (IME), embedding circuits directly into plastic. While this reduces weight, it makes recycling nearly impossible as polymers and metals cannot be easily separated. Source: Springer (2026); iFixit.", "switch"); 
+            } else { 
+                introWrapper.classList.add('hidden'); aiResponseBox.classList.add('hidden'); 
+            }
+        });
+        filamentArea.addEventListener('click', (e) => {
+            e.stopPropagation(); if (phase !== 'interaction-l2') return;
+            playClickSound();
+            const isDetached = filamentImg.classList.toggle('detached-left'); filamentArea.classList.toggle('detached-left', isDetached);
+            if (isDetached) { 
+                introWrapper.classList.remove('right'); 
+                showIntro("Traditional bulbs use tungsten filaments. Tungsten, coltan, and tin are extracted in the Bolivia and Indonesia, where forced labor and child labor are widely documented. These conflict minerals are essential for electronics but carry severe human rights risks. Source: Verité (2025). The OECD reports that supply chains for these minerals are highly concentrated. This concentration creates severe supply risks, price volatility, and geopolitical tension. Source: OECD (2026).", "filament"); 
+            } else { 
+                introWrapper.classList.add('hidden'); aiResponseBox.classList.add('hidden'); 
+            }
+        });
+
+        // 点击 "Is this right?" 的逻辑
+        isThisRightBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            playClickSound(); 
+            if (!currentPart) return; 
+
+            let count = aiClickCounts[currentPart];
+            if (count >= 3) return; 
+
+            const responses = aiResponses[currentPart];
+            const responseText = responses[count];
+
+            aiResponseText.textContent = responseText;
+            aiResponseBox.classList.remove('hidden');
+
+            if (count === 2) { 
+                aiResponseBox.classList.add('final-warning');
+            } else {
+                aiResponseBox.classList.remove('final-warning');
+            }
+
+            aiClickCounts[currentPart]++;
+        });
+
+        // ================= 冒险阶段 =================
+        startAdventureBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            playClickSound(); 
+            interactionStage.classList.add('hidden');
+            adventureStage.classList.remove('hidden');
+            statusBar.classList.remove('hidden');
+            startAdventure();
+        });
+
+        function updateStatus(heartDeduct, boneDeduct) {
+            heartHealth = Math.max(0, heartHealth - heartDeduct);
+            boneHealth = Math.max(0, boneHealth - boneDeduct);
+            heartProgress.style.width = heartHealth + '%';
+            boneProgress.style.width = boneHealth + '%';
+        }
+        function setStatus(heartVal, boneVal) {
+            heartHealth = heartVal; boneHealth = boneVal;
+            heartProgress.style.width = heartHealth + '%';
+            boneProgress.style.width = boneHealth + '%';
+        }
+
+        function hideAllAdvParts() {
+            advCasingBroken.classList.add('hidden'); advCasingFixed.classList.add('hidden');
+            advInner.classList.add('hidden'); advBattery1.classList.add('hidden');
+            advBattery2.classList.add('hidden'); advBattery1Dead.classList.add('hidden');
+            advBattery2Dead.classList.add('hidden'); advFilamentBroken.classList.add('hidden');
+            advFilamentFixed.classList.add('hidden'); advSwitch.classList.add('hidden');
+            advCasingArea.classList.add('hidden'); advSwitchArea.classList.add('hidden');
+            advFilamentArea.classList.add('hidden'); advBattery1Area.classList.add('hidden');
+            advBattery2Area.classList.add('hidden');
+            flashlightStatus.classList.add('hidden');
+            injuredScene.classList.add('hidden');
+            fullscreenText.classList.add('hidden');
+            encouragementText.classList.add('hidden');
+            endingText.classList.add('hidden');
+        }
+
+        function startAdventure() {
+            setStatus(100,100);
+            hideAllAdvParts();
+            adventureBg.classList.remove('hidden');
+            adventureBg.style.opacity = '1';
+            adventureBg.style.transition = 'opacity 3s ease';
+            setTimeout(() => {
+                adventureBg.style.opacity = '0.1';
+                setTimeout(() => {
+                    adventureBg.classList.add('hidden');
+                    adventurePhase = 'adv-broken';
+                    advCasingBroken.classList.remove('hidden');
+                    flashlightStatus.classList.remove('hidden');
+                    advCasingArea.classList.remove('hidden');
+                }, 2000);
+            }, 2000);
+        }
+
+        advCasingArea.addEventListener('click', (e) => {
+            e.stopPropagation();
+            playClickSound(); 
+            if (adventurePhase === 'adv-broken') {
+                updateStatus(30, 30);
+                advCasingBroken.classList.add('hidden');
+                advCasingFixed.classList.remove('hidden');
+                advCasingFixed.src = "images/flashlight-casing-n.png";
+                advSwitch.classList.remove('hidden');
+                adventurePhase = 'adv-fixed-unlit';
+                advCasingArea.classList.add('hidden');
+                advSwitchArea.classList.remove('hidden');
+            } else if (adventurePhase === 'adv-round2-broken') {
+                advCasingFixed.classList.add('hidden');
+                advInner.classList.remove('hidden');
+                advSwitch.classList.remove('hidden');
+                advBattery1.classList.remove('hidden');
+                advBattery2.classList.remove('hidden');
+                advFilamentBroken.classList.remove('hidden');
+                adventurePhase = 'adv-open-filament';
+                advCasingArea.classList.add('hidden');
+                advFilamentArea.classList.remove('hidden');
+            } else if (adventurePhase === 'adv-round4-broken') {
+                advCasingFixed.classList.add('hidden');
+                advInner.classList.remove('hidden');
+                advSwitch.classList.remove('hidden');
+                advBattery1Dead.classList.remove('hidden');
+                advBattery2Dead.classList.remove('hidden');
+                advFilamentBroken.classList.remove('hidden'); 
+                adventurePhase = 'adv-open-battery';
+                advCasingArea.classList.add('hidden');
+                advBattery1Area.classList.remove('hidden');
+                advBattery2Area.classList.remove('hidden');
+            }
+        });
+
+        advSwitchArea.addEventListener('click', (e) => {
+            e.stopPropagation();
+            playClickSound(); 
+            if (adventurePhase !== 'adv-fixed-unlit') return;
+            advSwitch.style.transform = 'translateY(-15px)';
+            advSwitch.style.transition = 'transform 0.3s ease';
+            advCasingFixed.src = "images/flashlight-casing-y.png";
+            flashlightStatus.classList.add('hidden');
+            adventurePhase = 'adv-fixed-lit';
+            setTimeout(() => {
+                hideAllAdvParts();
+                adventureBg.classList.remove('hidden');
+                adventureBg.style.opacity = '1';
+                setTimeout(() => {
+                    adventureBg.style.opacity = '0.1';
+                    setTimeout(() => {
+                        adventureBg.classList.add('hidden');
+                        adventurePhase = 'adv-round2-broken';
+                        advCasingFixed.classList.remove('hidden');
+                        advCasingFixed.src = "images/flashlight-casing-n.png";
+                        flashlightStatus.classList.remove('hidden');
+                        advCasingArea.classList.remove('hidden');
+                    }, 2000);
+                }, 2000);
+            }, 1500);
+        });
+
+        advFilamentArea.addEventListener('click', (e) => {
+            e.stopPropagation();
+            playClickSound(); 
+            if (adventurePhase !== 'adv-open-filament') return;
+            
+            advFilamentBroken.classList.add('hidden');
+            advFilamentFixed.classList.remove('hidden');
+            flashlightStatus.classList.add('hidden');
+            updateStatus(30, 30);
+            advFilamentArea.classList.add('hidden');
+
+            setTimeout(() => {
+                hideAllAdvParts();
+                adventureBg.classList.remove('hidden');
+                adventureBg.style.opacity = '1';
+                setTimeout(() => {
+                    adventureBg.style.opacity = '0.1';
+                    setTimeout(() => {
+                        adventureBg.classList.add('hidden');
+                        showInjuredScene();
+                    }, 2000);
+                }, 2000);
+            }, 1500);
+        });
+
+        function showInjuredScene() {
+            hideAllAdvParts();
+            adventureBg.classList.add('hidden');
+            injuredScene.classList.remove('hidden');
+            adventurePhase = 'adv-ask-help';
+        }
+
+        btnSave.addEventListener('click', (e) => {
+            e.stopPropagation();
+            playClickSound(); 
+            if (adventurePhase !== 'adv-ask-help') return;
+            injuredScene.classList.add('hidden');
+            updateStatus(30, 30);
+            setTimeout(() => {
+                setStatus(100, 100);
+                encouragementText.classList.remove('hidden');
+                adventurePhase = 'adv-encouraged';
+                document.addEventListener('click', function hideEnc() {
+                    encouragementText.classList.add('hidden');
+                    document.removeEventListener('click', hideEnc);
+                    playBackgroundThenFlashlight();
+                }, { once: true });
+            }, 500);
+        });
+
+        btnIgnore.addEventListener('click', (e) => {
+            e.stopPropagation();
+            playClickSound(); 
+            if (adventurePhase !== 'adv-ask-help') return;
+            injuredScene.classList.add('hidden');
+            adventureBg.classList.add('hidden');
+            statusBar.classList.add('hidden');
+            fullscreenText.classList.remove('hidden');
+            adventurePhase = 'adv-end';
+        });
+
+        function playBackgroundThenFlashlight() {
+            hideAllAdvParts();
+            adventureBg.classList.remove('hidden');
+            adventureBg.style.opacity = '1';
+            setTimeout(() => {
+                adventureBg.style.opacity = '0.1';
+                setTimeout(() => {
+                    adventureBg.classList.add('hidden');
+                    adventurePhase = 'adv-round4-broken';
+                    advCasingFixed.classList.remove('hidden');
+                    advCasingFixed.src = "images/flashlight-casing-n.png";
+                    flashlightStatus.classList.remove('hidden');
+                    advCasingArea.classList.remove('hidden');
+                }, 2000);
+            }, 2000);
+        }
+
+        advBattery1Area.addEventListener('click', (e) => {
+            e.stopPropagation();
+            playClickSound(); 
+            if (adventurePhase !== 'adv-open-battery') return;
+            advBattery1Dead.classList.add('hidden');
+            advBattery1.classList.remove('hidden');
+            updateStatus(15, 15);
+            advBattery1Area.classList.add('hidden');
+            adventurePhase = 'adv-battery1-fixed';
+        });
+
+        advBattery2Area.addEventListener('click', (e) => {
+            e.stopPropagation();
+            playClickSound(); 
+            if (adventurePhase !== 'adv-battery1-fixed') return;
+            advBattery2Dead.classList.add('hidden');
+            advBattery2.classList.remove('hidden');
+            advFilamentBroken.classList.add('hidden');
+            advFilamentFixed.classList.remove('hidden'); 
+            flashlightStatus.classList.add('hidden');
+            updateStatus(15, 15);
+            advBattery2Area.classList.add('hidden');
+            adventurePhase = 'adv-battery2-fixed';
+            
+            setTimeout(() => {
+                hideAllAdvParts();
+                statusBar.classList.add('hidden');
+                document.getElementById('days-counter').classList.add('hidden');
+                
+                adventureBg.classList.remove('hidden');
+                adventureBg.style.opacity = '1';
+                setTimeout(() => {
+                    adventureBg.style.opacity = '0.1';
+                    setTimeout(() => {
+                        adventureBg.classList.add('hidden');
+                        endingText.classList.remove('hidden');
+                    }, 2000);
+                }, 2000);
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

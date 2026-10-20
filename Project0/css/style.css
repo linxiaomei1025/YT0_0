@@ -1,0 +1,273 @@
+/* 全局重置与隐藏类 */
+* { box-sizing: border-box; }
+.hidden { display: none !important; }
+audio { display: none; } 
+body {
+    margin: 0; padding: 0; background-color: #000000; color: #ffffff;
+    font-family: 'Tempus Sans ITC', sans-serif; overflow: hidden;
+}
+#main { position: relative; width: 100vw; height: 100vh; }
+
+/* ================= 阶段一 & 二 ================= */
+.story-container {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100vh;
+    display: flex; justify-content: center; align-items: center;
+    text-align: center; cursor: pointer; padding: 20px;
+}
+.story-text { font-size: 40px; line-height: 1.5; max-width: 800px; }
+.story-text.large { font-size: 5rem; font-weight: bold; }
+
+.image-sequence-container {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    align-items: center; background-color: #000; padding-bottom: 80px;
+}
+#scene-image {
+    display: block; width: auto; height: 75vh; max-width: 90vw;
+    object-fit: contain; transition: opacity 0.5s ease;
+}
+
+.scene-sprite-active {
+    width: 60vw !important;        
+    height: 40vw !important;       
+    object-fit: cover !important;
+    animation: playScene 3s steps(3, jump-none) forwards !important;
+    object-position: 0% 0%;
+}
+
+.sprite-active {
+    width: 532px !important; height: 236px !important;
+    object-fit: cover !important; animation: playScene 3s steps(3, jump-none) forwards !important;
+    object-position: 0% 0%;
+}
+@keyframes playScene { from { object-position: 0% 0%; } to { object-position: 0% 100%; } }
+.sequence-text {
+    position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+    width: 85%; max-width: 800px; text-align: center;
+    font-size: 1.4rem; line-height: 1.5; color: #ffffff; margin: 0;
+}
+
+/* ================= 阶段三：拆解互动 ================= */
+.flashlight-wrapper {
+    position: relative; width: 800px; height: 60vh;
+    display: flex; justify-content: center; align-items: center; margin: 0 auto; 
+}
+.flashlight-part {
+    position: absolute; height: 100%; width: auto;
+    object-fit: contain; transition: all 0.5s ease; 
+}
+.inner-structure { z-index: 2; }
+.casing { z-index: 5; }
+.switch-part { z-index: 4; }
+.battery-part { z-index: 3; }
+.filament-part { z-index: 4; }
+
+.switch-part.on { transform: translateY(-15px); }
+.switch-part.off { transform: translateY(0); }
+
+.casing.detached-right { transform: translateX(10vw); }
+.battery-part.detached-left { transform: translateX(-10vw); }
+#battery1-area.detached-left, #battery2-area.detached-left { transform: translateX(-10vw); }
+.switch-part.detached-left { transform: translateX(-10vw) translateY(0); }
+#switch-area.detached-left { transform: translateX(-10vw); }
+.filament-part.detached-left { transform: translateX(-10vw); }
+#filament-area.detached-left { transform: translateX(-10vw); }
+
+/* 介绍框外层包装器（位置已调整：更靠上，更靠近手电筒） */
+.intro-wrapper {
+    position: absolute; 
+    left: 12vw;       /* 从 5vw 移过来，靠近手电筒 */
+    bottom: 20vh;     /* 从 10vh 移上来，避免太靠下 */
+    width: 450px; 
+    height: 480px; 
+    z-index: 20; 
+    transition: all 0.5s ease;
+}
+/* 如果点开的是外壳，介绍框可以靠右 */
+.intro-wrapper.right { left: auto; right: 8vw; }
+.intro-wrapper.hidden { opacity: 0; pointer-events: none; }
+
+/* 介绍框本体（修复文字溢出问题） */
+.intro-box {
+    position: relative; 
+    width: 100%; height: 100%; 
+    background-image: url('../images/wenzikuang.png?v=2'); 
+    background-size: 100% 100%; 
+    /* 增加 padding 让文字避开手绘边框 */
+    padding: 60px 50px 60px 50px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-start;
+    align-items: center; 
+    text-align: left; 
+    font-size: 0.9rem; 
+    line-height: 1.5; 
+    color: #000000; 
+    overflow: hidden; /* 确保内容不跑出背景图的物理边界 */
+}
+
+/* 介绍文字内容区域（可滚动，自动处理长文本） */
+.intro-content {
+    width: 65%; 
+    height: 100%; 
+    overflow-y: auto; /* 超长文字内部滚动，绝不会撑破背景图 */
+    word-wrap: break-word; 
+    padding-right: 8px; /* 给滚动条留空间 */
+    padding-top: 20px;
+}
+
+/* Is this right? 样式（贴在文字框底部） */
+.is-this-right {
+    position: absolute; 
+    bottom: 30px; 
+    font-family: 'Times New Roman', Times, serif;
+    color: #ffffff; 
+    text-decoration: underline;
+    cursor: pointer; 
+    font-size: 1.1rem; 
+    z-index: 5;
+}
+
+/* ================= AI 回复方框样式 ================= */
+.ai-response-box {
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    width: 100%;
+    background-color: transparent; /* 透明背景 */
+    border: 2px solid #ffffff;      /* 白色描边 */
+    color: #ffffff;                 /* 白色文字 */
+    font-family: 'Times New Roman', Times, serif; /* 打印字体 */
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    line-height: 1.4;
+    z-index: 30; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    box-sizing: border-box;
+    word-wrap: break-word;
+    transition: all 0.3s ease;
+}
+
+/* 第三次点击时：红字、大字号 */
+.ai-response-box.final-warning {
+    border-color: red;              
+    color: red;                     
+    font-size: 1.6rem;              
+    font-weight: bold;              
+}
+
+.flashlight-text-container {
+    position: absolute; bottom: 60px; left: 0; width: 100%;
+    display: flex; justify-content: center; align-items: center; gap: 20px; z-index: 20;
+}
+.check-box {
+    padding: 10px 20px; border: 2px solid #ffffff; color: #ffffff;
+    font-size: 1rem; cursor: pointer; transition: all 0.3s ease;
+    border-radius: 4px; white-space: nowrap; background: transparent;
+}
+.check-box:hover { background: #ffffff; color: #000000; }
+
+/* 【重大修改】将 start your adventure 死死固定在最右上角 */
+#start-adventure-btn {
+    position: fixed;    /* 不受任何父容器干扰 */
+    right: 5vw;
+    top: 5vh; 
+    z-index: 9999;      /* 保证在最上层 */
+    color: #ffffff !important; 
+}
+
+.click-area {
+    position: absolute; cursor: pointer; z-index: 999; 
+}
+.casing-area { width: 120px; height: 220px; top: 20%; left: 50%; transform: translateX(-50%); }
+.switch-area { width: 40px; height: 80px; top: 45%; left: 42%; }
+#battery1-area { width: 50px; height: 80px; top: 35%; left: 48%; }
+#battery2-area { width: 50px; height: 80px; top: 55%; left: 48%; }
+.filament-area { width: 60px; height: 60px; top: 15%; left: 48%; }
+
+/* ================= 阶段四：冒险阶段 ================= */
+.adventure-container {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100vh;
+    background-color: #000; overflow: hidden;
+}
+#adventure-bg {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: cover; z-index: 1; transition: opacity 2s ease;
+}
+.days-counter {
+    position: absolute; top: 20px; left: 20px;
+    font-size: 1.2rem; color: #ffffff; z-index: 10;
+}
+.flashlight-status {
+    position: absolute; top: 80px; left: 50%; transform: translateX(-50%);
+    font-size: 1.5rem; color: #ffffff; z-index: 15; white-space: nowrap;
+}
+.adventure-flashlight-wrapper {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%); width: 300px; height: 400px;
+    z-index: 5; display: flex; justify-content: center; align-items: center;
+}
+.adv-part {
+    position: absolute; height: 100%; width: auto;
+    object-fit: contain; transition: all 0.5s ease;
+}
+#adv-casing-broken, #adv-casing-fixed { z-index: 10; }
+#adv-inner { z-index: 6; }
+#adv-battery-1, #adv-battery-2, #adv-battery-1-dead, #adv-battery-2-dead { z-index: 7; }
+#adv-filament-broken, #adv-filament-fixed { z-index: 8; }
+#adv-switch { z-index: 5; }
+
+.adv-click-area {
+    position: absolute; cursor: pointer; z-index: 999;
+}
+#adv-casing-area { width: 120px; height: 250px; top: 20%; left: 50%; transform: translateX(-50%); }
+#adv-switch-area { width: 40px; height: 70px; top: 50%; left: 38%; }
+#adv-filament-area { width: 60px; height: 60px; top: 20%; left: 50%; transform: translateX(-50%); }
+#adv-battery1-area { width: 50px; height: 70px; top: 35%; left: 50%; transform: translateX(-50%); }
+#adv-battery2-area { width: 50px; height: 70px; top: 55%; left: 50%; transform: translateX(-50%); }
+
+.status-bar {
+    position: absolute; bottom: 20px; left: 0; width: 100%;
+    display: flex; justify-content: center; gap: 40px; z-index: 20; padding: 0 20px;
+}
+.status-item { display: flex; align-items: center; gap: 10px; }
+.status-icon { width: 50px; height: 50px; object-fit: contain; }
+.progress-bar-bg {
+    width: 150px; height: 12px; background-color: #333333;
+    border: 2px solid #ffffff; position: relative;
+}
+.progress-fill {
+    height: 100%; width: 100%; background-color: #ffffff; transition: width 0.5s ease;
+}
+
+.injured-scene {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    z-index: 30; text-align: center; background: rgba(0,0,0,0.8);
+    padding: 30px; 
+    border-radius: 10px;
+    width: 600px;
+}
+.injured-img { max-width: 300px; display: block; margin: 0 auto 20px; }
+.injured-text { font-size: 1.2rem; margin-bottom: 20px; }
+.injured-buttons { display: flex; gap: 20px; justify-content: center; }
+.injured-btn {
+    padding: 10px 20px; font-size: 1rem; cursor: pointer;
+    background: transparent; border: 2px solid #fff; color: #fff; border-radius: 5px;
+}
+.injured-btn:hover { background: #fff; color: #000; }
+
+.fullscreen-text {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    font-size: 2rem; text-align: center; z-index: 40; width: 80%;
+}
+.encouragement-text {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    font-size: 1.8rem; text-align: center; z-index: 35;
+    background: rgba(0,0,0,0.8); padding: 20px; border-radius: 10px;
+}
+.ending-text {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    font-size: 2rem; text-align: center; z-index: 40; width: 80%;
+    line-height: 1.5;
+}

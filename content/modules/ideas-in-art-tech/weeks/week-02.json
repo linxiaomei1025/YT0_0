@@ -1,0 +1,13 @@
+{
+  "method": "Media archaeology and comparative analysis of discrete visual recording and 20th-century signal processing (FFT, vocoder).",
+  "related_work": "Muybridge’s chronophotography, Marey’s photographic gun, Duchamp’s \"Nude Descending a Staircase,\" and Edgerton’s high-speed photography. Supplementary sources: Jonathan Crary’s Techniques of the Observer and Friedrich Kittler’s Gramophone, Film, Typewriter.",
+  "references": "",
+  "conclusion_future_work": "Digital prehistory reveals a deep entanglement of aesthetics and military technology. In future practice, I will explore granular synthesis and frequency-domain manipulation to critically examine digital memory and surveillance, grounding my creative work in a critical understanding of the tools I use.",
+  "date": "2026-10-03T11:46:00.000+08:00",
+  "results_discussion": "Muybridge and Marey converted continuous motion into discrete frames, pioneering motion capture while mirroring military logic, from Marey's photographic gun to Edgerton's nuclear test documentation. This discrete logic culminates in the Fast Fourier Transform (Tukey, 1964) and Dudley's vocoder, which slice and reassemble audio spectra. FFT underpins MP3 compression and Autotune, establishing the vocoder as a posthuman technology. Leif Inge's 9 Beet Stretch (2008) exemplifies this by stretching Beethoven's 9th to 24 hours via granular synthesis. What surprised me is the deeply militarized origin of these supposedly neutral tools—Hiroshima's \"Human Shadow\" and top-secret WWII vocoder calls—contrasting sharply with their contemporary artistic and everyday use. What remains unresolved is the ethical tension: contemporary artists wield these military-industrial tools for creative expression, yet the underlying logic of infinite slicing often erases the original context. The transition from analogue continuity to digital discreteness fundamentally redefined how we perceive reality, merging aesthetic innovation with military-industrial imperatives. This suggests that the digital prehistory is not merely a linear progression of technology, but a complex negotiation between control and creativity, where the same algorithms that enable surveillance and warfare also facilitate profound artistic expression. Thus, understanding this history is crucial for critically engaging with contemporary digital culture and its pervasive influence on our perception.",
+  "week": 2,
+  "title": "W2（need exbit)",
+  "images": [],
+  "introduction": "How did pre-digital technologies shape our perception of time and space? This week, I argue that early motion capture and signal processing laid the discrete foundations for digital art. I will answer this through a written case study.",
+  "video": ""
+}

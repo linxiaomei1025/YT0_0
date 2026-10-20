@@ -1,0 +1,21 @@
+{
+  "projects": [
+    {
+      "title": "Project 0-mood board",
+      "description": "Desk research\nSabbaghi, M. and Behdad, S. (2024) 'Estimating energy left in discarded alkaline batteries: Evaluating consumption and recovery opportunities', Waste Management, 189, pp. 58–67. doi: 10.1016/j.wasman.2024.08.016.\n\nThe Independent (2023) 'Cobalt mining in Congo is driving modern slavery', The Independent [London, England], 22 February. Available at: https://link.gale.com/apps/doc/A738081356/STND?u=unisoton&sid=bookmark-STND&xid=07ce49d0 (Accessed: 2 October 2026).\n\nVerité (2025) 'Coltan, tungsten, and tin', Commodity Atlas. Available at: https://verite.org/initiative/commodity-atlas/coltan-tungsten-tin/ (Accessed: 2 October 2026).\n\nSpringer (2026) 'Sustainability considerations in in-mould electronics', in Circular Approaches for the Ecodesign, Repair and Remanufacturing of Car and Mass Electronics. Cham: Springer. doi: 10.1007/s40684-026-00900-x.\n\nOECD (2026) OECD Inventory of Export Restrictions on Critical Raw Materials 2026. Paris: OECD Publishing. Available at: https://www.oecd.org/en/publications/oecd-inventory-of-export-restrictions-on-critical-raw-materials-2026_d5ca8f62-en.html (Accessed: 2 October 2026).\n\nOgundiran, M.B., Olujobi, T. and Osibanjo, O. (2014) 'Composition and management of rechargeable electric torch wastes in Ibadan, Nigeria', Journal of Material Cycles & Waste Management, 16(1), pp. 115–123. doi: 10.1007/s10163-013-0158-1.\n\nWalk Free (2025) Beyond Compliance in the Electronics Sector: Assessing UK and Australian Modern Slavery Act Statements. Available at: https://www.walkfree.org/reports/beyond-compliance-in-the-electronics-sector/ (Accessed: 2 October 2026).\n\nMintel (2014) Lighting Equipment (Industrial Report) – UK – September 2014. London: Mintel Group Ltd. Available at: https://reports.mintel.com (Accessed: 2 October 2026).\n\nDesign Life-Cycle (n.d.) LED Flashlight. Available at: https://www.designlife-cycle.com (Accessed: 2 October 2026).\n\nBBC News (2025) 'Trapped underground with decaying bodies, miners faced a dark reality', BBC News, 18 January. Available at: https://www.bbc.com/news/articles/c62qqg0zj6yo (Accessed: 6 October 2026).\n\nThe Associated Press (2025) 'Standoff in South Africa ends with 87 miners dead and anger over police's \"smoke them out\" tactics', AP News, 16 January. Available at: https://www.ap.org/news-highlights/spotlights/2025/standoff-in-south-africa-ends-with-87-miners-dead-and-anger-over-polices-smoke-them-out-tactics/ (Accessed: 6 October 2026).\n\nXinhua News (2023) 'Zambian miner survives five days buried underground', Xinhua News, 7 December. Available at: https://www.163.com/dy/article/ILC3QPTV05346RC6.html (Accessed: 6 October 2026).\n\nAzVision (2026) 'Tesla and Apple among tech giants accused of aiding child labour in DRC', AzVision, 6 March. Available at: https://en.azvision.az/news/117002/tesla-and-apple-among-tech-giants-accused-of-aiding-child-labour-in-drc.html (Accessed: 6 October 2026).\n\nRTBF (2025) 'At least 32 miners dead after bridge collapse at cobalt mine in DRC', RTBF Actus, 16 November. Available at: https://beta.rtbf.be/article/au-moins-32-mineurs-morts-apres-l-effondrement-d-un-pont-dans-une-mine-de-cobalt-en-republique-democratique-du-congo-11632655 (Accessed: 6 October 2026).\n\nMoodboard\nhttp://127.0.0.1:5501/ct1-week2-more-html-css-and-intro-to-js/index.html"
+    },
+    {
+      "title": "Project 0-images",
+      "images": [
+        "assets/images/1.png",
+        "assets/images/2.png"
+      ],
+      "description": "images drawed by hand"
+    },
+    {
+      "title": "Project 0-link",
+      "link": "http://127.0.0.1:5501/Project0/index.html",
+      "description": "Final work"
+    }
+  ]
+}
