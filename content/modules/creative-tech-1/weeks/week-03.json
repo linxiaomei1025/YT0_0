@@ -1,13 +1,16 @@
 {
-  "week": 3,
-  "title": "",
-  "date": "",
-  "introduction": "",
+  "method": "In practice, I attended the BFI festival, experiencing a sound-first, water-themed film, and tested a Japanese Alzheimer's simulator game. For Project 0, I methodically created all visual assets using hand-drawn techniques and constructed a comprehensive storyboard to define the game’s scope and required content.",
   "related_work": "",
-  "method": "",
-  "results_discussion": "",
-  "conclusion_future_work": "",
-  "images": [],
-  "video": "",
-  "references": ""
+  "references": "",
+  "conclusion_future_work": "The week’s question is answered by realising that effective narrative design requires a careful balance of sensory deprivation and empathy-driven mechanics. I will use these insights in my practice by prioritising emotional resonance and tactile visual styles in future interactive projects.",
+  "date": "",
+  "results_discussion": "Making: I produced a complete set of hand-drawn assets for Project 0, which establishes a raw, personal aesthetic. The storyboard was successfully finalised, mapping out the precise narrative flow and interaction points. The BFI screening, featuring a pitch-black room, beanbags, and a physical bowl of water, deeply impacted my understanding of atmosphere. The Japanese game, which tasked players with daily chores from an Alzheimer's patient's perspective, showcased how excellent UI design can communicate confusion and vulnerability effectively. My storyboard translates these atmospheric lessons into my own game, ensuring the visual pacing supports the narrative.\nWriting: The BFI water film, which began with audio before revealing oceanic currents, highlighted how sensory focus can manipulate perception. Similarly, the Alzheimer's game proved that perspective-taking mechanics are powerful tools for fostering empathy. This aligns with Preece et al. (2015), who argue that immersive interactions can bridge the gap between user and subject. Applying this to Project 0, I realised that the visual style must not just be decorative but functional, guiding the player's emotional response. The hand-drawn assets serve this purpose by making the environment feel tactile and subjective. What surprised me was how a simple physical object (the bowl of water) anchored the digital experience, blurring the lines between physical and virtual. This unresolved tension between physical sensation and digital narrative is something I aim to address in my future design work.",
+  "week": 3,
+  "title": "W3",
+  "images": [
+    "assets/images/1.png",
+    "assets/images/2.png"
+  ],
+  "introduction": "This week, I explored how sensory deprivation and narrative design can evoke empathy through the BFI London Film Festival and a game exhibition. I will answer the week’s question by reflecting on these immersive experiences and applying their principles to the visual and storyboard design of Project 0.",
+  "video": ""
 }

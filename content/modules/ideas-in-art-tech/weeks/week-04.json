@@ -1,13 +1,13 @@
 {
-  "week": 4,
-  "title": "",
-  "date": "",
-  "introduction": "",
+  "method": "I attended the lecture on toy evolution and analysed historical artefacts alongside modern digital playthings. I then designed a conceptual hybrid toy that bridges physical manipulation with virtual feedback to test the boundaries between reality and simulation.",
   "related_work": "",
-  "method": "",
-  "results_discussion": "",
-  "conclusion_future_work": "",
+  "references": "",
+  "conclusion_future_work": "The week’s question is answered by understanding that the definition of a toy is fluid, shifting from functional objects to immersive virtual experiences. In my future practice, I will explore how tangible interfaces can be used to ground digital interactions, creating more meaningful, hybrid experiences.",
+  "date": "",
+  "results_discussion": "Making: I created a design concept for a hybrid toy that utilises physical blocks embedded with sensors to control a digital environment. By manipulating the tangible objects, users navigate a virtual narrative, combining the tactile satisfaction of traditional building blocks with the dynamic possibilities of software. During the design process, I realised that the physical weight and texture of the blocks were crucial; without them, the digital interaction felt disconnected. This prototype successfully demonstrates how merging physical and virtual realms can create an enriched, multi-sensory play experience that neither medium could achieve alone.\nWriting: The guest lecture fundamentally disrupted my preconceived notions of toys as mere instruments of childhood amusement. Historically, as discussed, early objects now classified as toys often served ritualistic or educational functions, highlighting that the concept of 'play' is culturally fluid and constantly evolving. Today, we are witnessing a profound paradigm shift where playthings are migrating into purely virtual spaces or merging with digital overlays. While virtual toys offer limitless customisation and interactive depth, they lack the tactile, material presence of traditional objects. Conversely, hybrid toys attempt to mediate this gap, yet they often risk feeling gimmicky if the physical-digital integration is not seamless. What struck me most was the lecture's assertion that modern digital toys are increasingly driven by data collection and algorithmic engagement rather than pure imaginative play. This unresolved tension between the materiality of the physical toy and the ethereality of the digital raises vital questions about how future designers can preserve the essence of unstructured play while embracing technological advancement.",
+  "week": 4,
+  "title": "W4",
   "images": [],
-  "video": "",
-  "references": ""
+  "introduction": "This week’s guest lecture traced the morphological evolution of toys, challenging modern assumptions about play. The discussion revealed that early toys were rarely for amusement, and contemporary playthings are rapidly shifting from physical objects to virtual or hybrid experiences. I will evaluate these historical and digital transformations.",
+  "video": ""
 }

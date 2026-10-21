@@ -1,13 +1,13 @@
 {
-  "week": 4,
-  "title": "",
-  "date": "",
-  "introduction": "",
+  "method": "Practically, I attended the Bristol workshops: scanning physical objects into Rhino for digital twin creation, and dismantling e-waste to build kinetic sculptures. For Project 0, I wrote the foundational game logic, finalised the code, and delivered the final presentation.",
   "related_work": "",
-  "method": "",
-  "results_discussion": "",
-  "conclusion_future_work": "",
+  "references": "",
+  "conclusion_future_work": "The week’s question is answered by recognising that digital twins require heavy data, while physical upcycling breathes life into discarded tech. I will use this in practice by focusing on mastering audio integration for seamless, multi-sensory interactive experiences.",
+  "date": "2026-10-21T15:40:00.000+08:00",
+  "results_discussion": "Making: In Bristol, I successfully scanned objects, importing dense point-cloud data into Rhino to generate an increasingly detailed virtual space, demonstrating how data density equates to digital fidelity. In the afternoon, I dismantled discarded electronics, observing how others repurposed components (e.g., a motorised windmill made from chess pieces). For Project 0, I completed all game coding, ensuring the interactions functioned smoothly for the presentation. However, I encountered a technical limitation: I could not embed audio directly into the project. To resolve this during the presentation, I played the background music via a separate web browser, which somewhat disrupted the immersive experience I had envisioned.\nWriting: The Bristol workshops highlighted the material reality of our digital lives. Creating a digital twin required immense data capture, revealing that virtual spaces are resource-intensive. Concurrently, dismantling e-waste exposed the hidden toxic materials and intricate engineering behind everyday devices, reinforcing Lepawsky's (2018) arguments about the global waste crisis. The kinetic windmill created by a peer was a perfect example of creative upcycling, transforming obsolete data into new narratives. Applying this to Project 0, the inability to embed audio revealed a significant flaw in my technical execution. While the visual hand-drawn assets worked well, the lack of integrated sound broke the intended atmospheric immersion. Using a separate webpage to play music was a practical workaround, but it highlighted the necessity of mastering web audio APIs for future projects. This unresolved issue requires immediate technical attention.",
+  "week": 4,
+  "title": "W4",
   "images": [],
-  "video": "",
-  "references": ""
+  "introduction": "This week focused on the intersection of physical reality and digital construction through workshops in Bristol, alongside the finalisation of Project 0. I will answer the week’s question by evaluating digital twin technology, e-waste upcycling, and my coding implementation.",
+  "video": ""
 }

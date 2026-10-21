@@ -1,13 +1,13 @@
 {
-  "week": 3,
-  "title": "",
+  "method": "Methodologically, I analysed the provided bird imagery, focusing on wing-stroke mechanics. I then researched historical attempts to capture flight through chronophotography and applied these principles of abstraction to conceptualise a dynamic bionic structure.",
+  "related_work": "My reflections are grounded in the provided course materials, specifically the work of Étienne-Jules Marey [1] and Giovanni Borelli [2] on biomechanics. I also referenced Craig Reynolds’ [3] foundational Boids algorithm to understand modern digital flocking simulations and the shift from biological observation to mathematical modelling",
+  "references": "[1] Étienne-Jules Marey. 1894. The Flight of Birds.\n[2] Giovanni Alfonso Borelli. 1734. De motu animalium.\n[3] Craig W. Reynolds. 1987. Flocks, Herds and Schools: A Distributed Behavioral Model. SIGGRAPH '87.",
+  "conclusion_future_work": "The week’s question is answered by recognising that bionic design must balance mechanical abstraction with organic unpredictability. I will use this insight in my practice by integrating bio-inspired algorithms into future interactive spatial designs to generate more naturalistic, emergent user experiences.",
   "date": "",
-  "introduction": "",
-  "related_work": "",
-  "method": "",
-  "results_discussion": "",
-  "conclusion_future_work": "",
+  "results_discussion": "Making: I developed a prototype that translates the mechanics of bird flight into a digital interface. By observing the footage, I extracted data points on wing oscillation and applied a simplified Boids algorithm to simulate flocking behaviour. The resulting visualisation demonstrates how individual, simple actions can generate complex, emergent movement. This process revealed the difficulty of capturing organic fluidity through rigid code, requiring continuous adjustments to the separation and cohesion parameters to avoid artificial-looking motion.\nWriting: The process of translating a living bird into a digital model echoes the historical trajectory of Marey’s chronophotographic gun, which reduced complex biological entities to discrete, analyzable data points. As seen in the course materials, this datafication inevitably transforms into divination—using extracted data to predict or simulate future behaviours. This leap from observing nature to engineering it is highly visible in modern applications, from DARPA’s surveillance drones to Reynolds’ Boids. What surprised me during my research was the extent to which contemporary design relies on treating nature not as a physical entity, but as an informational system to be decoded and exploited. While tools like Marey’s offered unprecedented insight, they also stripped the organism of its vitality, reducing it to mere mechanics. However, as I found in my own prototype, simplifying these biological rules often leads to unexpected, emergent complexities that cannot be fully predicted, blurring the lines between algorithmic control and organic unpredictability.",
+  "week": 3,
+  "title": "W3",
   "images": [],
-  "video": "",
-  "references": ""
+  "introduction": "This week’s exploration focused on avian motion and its translation into bionic design. Watching bird footage highlighted the complex relationship between natural flight and technological abstraction. I will answer the week's question by examining how we decode biological movement into digital data and apply it to design.",
+  "video": ""
 }
